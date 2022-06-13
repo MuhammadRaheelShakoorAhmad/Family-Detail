@@ -7,5 +7,4 @@ router.register('offers', OfferViewSet)
 router.register('states', PossibleProgressStatesViewSets)
 
 
-
 urlpatterns = router.urls

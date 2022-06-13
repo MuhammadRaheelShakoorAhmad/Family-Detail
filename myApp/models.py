@@ -47,7 +47,6 @@ class Family(models.Model):
     progress_state = models.ForeignKey(ProgressState, on_delete=models.CASCADE)
     offer = models.ForeignKey(Offer, on_delete=models.CASCADE)
 
-
     def __str__(self) -> str:
         return self.name
 

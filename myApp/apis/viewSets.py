@@ -1,4 +1,3 @@
-import imp
 from rest_framework.viewsets import ModelViewSet
 from myApp.models import Offer, FamilyType, ProgressState
 from rest_framework.permissions import AllowAny
