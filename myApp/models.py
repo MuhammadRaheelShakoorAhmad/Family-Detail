@@ -12,9 +12,8 @@ class Transalations(models.Model):
         return self.language
 
 
-
 class FamilyType(models.Model):
-    f_specifications = models.ManyToManyField(Transalations, null=True, blank=True)
+    f_specifications = models.ManyToManyField(Transalations)
 
     def __str__(self) -> str:
         return self.f_specifications.language
@@ -49,5 +48,3 @@ class Family(models.Model):
 
     def __str__(self) -> str:
         return self.name
-
-    

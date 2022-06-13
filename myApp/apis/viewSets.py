@@ -7,7 +7,7 @@ from myApp.apis.serializers import OfferSerializer, FamilyTypeSerializer, Possib
 class OfferViewSet(ModelViewSet):
     queryset = Offer.objects.all()
     permission_classes = [AllowAny, ]
-    serializer_class = OfferSerializer  
+    serializer_class = OfferSerializer
 
 class FamilyTypeViewSet(ModelViewSet):
     queryset = FamilyType.objects.all()
