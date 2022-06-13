@@ -15,7 +15,7 @@ class FamilyTypeViewSet(ModelViewSet):
     serializer_class = FamilyTypeSerializer
 
 class PossibleProgressStatesViewSets(ModelViewSet):
-    queryset = ProgressState.objects.all()
+    queryset = ProgressState.objects.filter().all()
     permission_classes = [AllowAny, ]
     serializer_class = PossibleProgressStateSerializer
 
