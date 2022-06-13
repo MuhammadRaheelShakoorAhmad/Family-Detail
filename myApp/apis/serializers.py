@@ -14,5 +14,5 @@ class FamilyTypeSerializer(serializers.ModelSerializer):
 
 class PossibleProgressStateSerializer(serializers.ModelSerializer):
     class Meta:
-        model = ProgressState.objects.all()
+        model = ProgressState
         fields = '__all__'
