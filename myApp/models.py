@@ -9,6 +9,14 @@ class Transalations(models.Model):
     def __str__(self) -> str:
         return self.language
 
+class ProgressStatesTransalation(models.Model):
+    language = models.CharField(max_length=200, default="")
+    family_type = models.CharField(max_length=200, default="") 
+
+    def __str__(self) -> str:
+        return self.language
+
+
 
 class FamilyType(models.Model):
     f_specifications = models.ManyToManyField(Transalations)
@@ -18,6 +26,7 @@ class FamilyType(models.Model):
 
 
 class ProgressState(models.Model):
+    languages = models.ManyToManyField(ProgressStatesTransalation)
     state_name = models.CharField(max_length=200, default="")
 
     def __str__(self) -> str:
