@@ -1,4 +1,3 @@
-from pydoc import describe
 from django.db import models
 
 # Create your models here.
@@ -23,12 +22,9 @@ class ProgressStatesTransalation(models.Model):
 class FamilyType(models.Model):
     f_specifications = models.ManyToManyField(Transalations)
 
-    def __str__(self) -> str:
-        return self.f_specifications.language
-
 
 class ProgressState(models.Model):
-    languages = models.ManyToManyField(ProgressStatesTransalation)
+    specifications = models.ManyToManyField(ProgressStatesTransalation)
     state_name = models.CharField(max_length=200, default="")
 
     def __str__(self) -> str:
