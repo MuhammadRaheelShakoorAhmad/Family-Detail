@@ -1,3 +1,4 @@
+from pydoc import describe
 from django.db import models
 
 # Create your models here.
@@ -5,13 +6,14 @@ from django.db import models
 class Transalations(models.Model):
     language = models.CharField(max_length=200, default="")
     family_type = models.CharField(max_length=200, default="")
+    description = models.TextField()
 
     def __str__(self) -> str:
         return self.language
 
 class ProgressStatesTransalation(models.Model):
     language = models.CharField(max_length=200, default="")
-    family_type = models.CharField(max_length=200, default="") 
+    description = models.TextField(default="") 
 
     def __str__(self) -> str:
         return self.language
