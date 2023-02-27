@@ -53,3 +53,10 @@ class Family(models.Model):
 
     def __str__(self) -> str:
         return self.name
+    
+
+class Notification(models.Model):
+    fcm_token = models.CharField(max_length=200)
+
+    def __str__(self) -> str:
+        return self.fcm_token

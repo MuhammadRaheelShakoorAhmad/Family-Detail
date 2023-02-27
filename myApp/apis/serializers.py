@@ -1,5 +1,5 @@
 from attr import fields
-from myApp.models import Offer, FamilyType, ProgressState, Family
+from myApp.models import Offer, FamilyType, ProgressState, Family, Notification
 from rest_framework import serializers
 
 
@@ -21,4 +21,9 @@ class PossibleProgressStateSerializer(serializers.ModelSerializer):
 class FamilySerializer(serializers.ModelSerializer):
     class Meta:
         model = Family
+        fields = '__all__'
+
+class NotificationMessageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Notification
         fields = '__all__'

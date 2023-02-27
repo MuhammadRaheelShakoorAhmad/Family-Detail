@@ -1,9 +1,10 @@
 from rest_framework.viewsets import ModelViewSet
-from myApp.models import Offer, FamilyType, ProgressState, Family
+from myApp.models import Offer, FamilyType, ProgressState, Family, Notification
 from rest_framework.permissions import AllowAny
-from myApp.apis.serializers import OfferSerializer, FamilyTypeSerializer, PossibleProgressStateSerializer, FamilySerializer
+from myApp.apis.serializers import OfferSerializer, FamilyTypeSerializer, PossibleProgressStateSerializer, FamilySerializer, NotificationMessageSerializer
 from rest_framework.response import Response
 from rest_framework import status
+from .utils import notify
 
 
 class OfferViewSet(ModelViewSet):
@@ -34,4 +35,38 @@ class FamilyViewSet(ModelViewSet):
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+
+
+
+class NotificationMessageViewSet(ModelViewSet):
+    queryset = Notification.objects.all()
+    permission_classes = [AllowAny, ]
+    serializer_class = NotificationMessageSerializer
+
+    def create(self, request, *args, **kwargs):
+        data = request.data
+        notify(
+            {
+            "title": "Leave for Approval", 
+            "body": "Leave application Applied",
+            "fcm_token": data.get("fcm_token")
+            }
+        )
+        return Response({"message": "Notification sent"}, status=status.HTTP_201_CREATED)
+    
+
+
+
+
+    def list(self, request, *args, **kwargs):
+        status = notify(
+            {
+            "title": "Leave for Approval", 
+            "body": "Leave application Applied",
+            "fcm_token": Notification.objects.last().fcm_token
+            }
+        )        
+        return Response({"status": status})
+    
+
 
